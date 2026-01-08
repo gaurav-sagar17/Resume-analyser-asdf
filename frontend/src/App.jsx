@@ -7,7 +7,7 @@ import ScoreDashboard from './components/ScoreDashboard'
 import FeedbackCards from './components/FeedbackCards'
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL 
 
 function App() {
   const [analysisResult, setAnalysisResult] = useState(null)
@@ -23,11 +23,8 @@ function App() {
       const formData = new FormData()
       formData.append('file', file)
 
-      const response = await axios.post(`${API_URL}/analyze`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      const response = await axios.post(`${API_URL}/analyze`, formData)
+
 
       setAnalysisResult(response.data)
     } catch (err) {
